@@ -1,0 +1,96 @@
+import java.util.Random;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.AWTEvent;
+import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class labeldemo extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField textField;
+	
+	/**
+	 * Launch the application.
+	 */
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					labeldemo frame = new labeldemo();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public labeldemo() {
+		setBackground(new Color(255, 255, 255));
+		setForeground(new Color(128, 128, 128));
+		setFont(new Font("Bodoni MT Black", Font.ITALIC, 20));
+		setTitle("password generator (????)^?? ??????????");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setForeground(new Color(128, 128, 128));
+		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		
+		JLabel lblNewLabel = new JLabel("PASSWORD GENERATOR",SwingConstants.CENTER);
+		lblNewLabel.setBackground(new Color(192, 192, 192));
+		lblNewLabel.setFont(new Font("", Font.BOLD | ABORT, 15));
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+		lblNewLabel.setBounds(90, 50, 250, 50);
+		contentPane.add(lblNewLabel);
+		
+		textField = new JTextField();
+		//textField.setHorizontalAlignment(JTextField.LEFT);
+		textField.setBackground(new Color(192, 192, 192));
+		textField.setBounds(100, 100, 230, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("GENERATE");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int len=8;
+				String validChar="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$";
+				StringBuilder st = new StringBuilder();
+				Random rand = new Random();
+				while(0<len--) {
+					st.append(validChar.charAt(rand.nextInt(validChar.length())));
+				
+			}
+				textField.setText(st.toString());
+			}
+		});
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(153, 153, 153));
+		btnNewButton.setFont(new Font("", Font.BOLD | ABORT, 19));
+		btnNewButton.setBounds(138, 201, 146, 21);
+		contentPane.add(btnNewButton);
+	}
+}
